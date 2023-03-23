@@ -49,6 +49,7 @@ transformer.transform(data)
 ### [SimpleImputer](https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html)
 
 Replaces missing values using a descriptive statistic (e.g. mean, median, or most frequent) along each column, or using a constant value.
+Parameters: `missing_values` specifies what we assume as a missing value, `strategy` specifies what we will replace the missing values with.
 
 ```
 import numpy as np
@@ -58,11 +59,22 @@ imputer.fit(data)
 imputer.transform(data)
 ```
 
+### [PolynomialFeatures¶](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html)
+
+Generates polynomial and interaction features.
+Parameters: `degree` specifies the maximal degree of the polynomial features
+
+```
+from sklearn.preprocessing import PolynomialFeatures
+poly = PolynomialFeatures(degree = 2)
+>>> poly.fit_transform(X)
+```
+
 ## 2. Encoding
 
 ### [OrdinalEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html)
 
-OrdinalEncoder will encode each category with a different number.
+`OrdinalEncoder` will encode each category with a different number.
 
 ```
 from sklearn.preprocessing import OrdinalEncoder
@@ -72,7 +84,7 @@ data_encoded = encoder.fit_transform(data)
 
 ### [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html)
 
-For a given feature, OneHotEncoder will create as many new columns as there are possible categories. For a given sample, the value of the column corresponding to the category will be set to 1 while all the columns of the other categories will be set to 0.
+For a given feature, `OneHotEncoder` will create as many new columns as there are possible categories. For a given sample, the value of the column corresponding to the category will be set to 1 while all the columns of the other categories will be set to 0.
 
 ```
 from sklearn.preprocessing import OneHotEncoder
@@ -88,7 +100,7 @@ Selects columns based on datatype or the columns name.
 
 ### [ColumnTransformer](https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer)
 
-Applies spesific transformations to the subset of columns in the data.
+Applies specific transformations to the subset of columns in the data.
 
 ```
 from sklearn.compose import ColumnTransformer
