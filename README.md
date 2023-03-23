@@ -67,7 +67,7 @@ Parameters: `degree` specifies the maximal degree of the polynomial features
 ```
 from sklearn.preprocessing import PolynomialFeatures
 poly = PolynomialFeatures(degree = 2)
->>> poly.fit_transform(X)
+poly.fit_transform(data)
 ```
 
 ## 2. Encoding
@@ -115,4 +115,28 @@ categorical_preprocessor = OrdinalEncoder(handle_unknown="use_encoded_value",
 preprocessor = ColumnTransformer([
     ('cat_preprocessor', categorical_preprocessor, categorical_columns)],
     remainder='passthrough', sparse_threshold=0)
+```
+
+## 4. Pipelines
+
+### [make_pipeline](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html)
+
+Allows to construct a pipeline – a set of commands/models/etc. which will be executed consequently.
+
+```
+from sklearn.pipeline import make_pipeline
+from sklearn.linear_model import LogisticRegression
+
+model = make_pipeline(
+    OneHotEncoder(handle_unknown="ignore"), LogisticRegression(max_iter=500)
+)
+```
+
+### [set_config](https://scikit-learn.org/stable/modules/generated/sklearn.set_config.html#sklearn.set_config)
+
+Allows to vizualize the pipelines in Jupyter, needs to be set once at the beginning of your notebook.
+
+```
+from sklearn import set_config
+set_config(display="diagram")
 ```
