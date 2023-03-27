@@ -140,3 +140,26 @@ Allows to vizualize the pipelines in Jupyter, needs to be set once at the beginn
 from sklearn import set_config
 set_config(display="diagram")
 ```
+
+## 5. Model training
+
+### [train_test_split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split)
+
+Split arrays or matrices into random train and test subsets.
+
+```
+from sklearn.model_selection import train_test_split
+data_train, data_test, target_train, target_test = train_test_split(
+    data, target, random_state=42)
+```
+
+### [learning_curve]
+
+Split arrays or matrices into random train and test subsets.
+
+```
+from sklearn.model_selection import train_test_split
+data_train, data_test, target_train, target_test = train_test_split(
+    data, target, random_state=42)
+```
+
