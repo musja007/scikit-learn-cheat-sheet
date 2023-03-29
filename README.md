@@ -172,3 +172,61 @@ results = learning_curve(
     scoring="neg_mean_absolute_error", n_jobs=2)
 ```
 
+## 6. Metrics
+
+### [mean_squared_error](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html#sklearn.metrics.mean_squared_error)
+
+```
+from sklearn.metrics import mean_squared_error
+mean_squared_error(y_true, y_pred)
+```
+
+### [precision_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)
+
+`average` parameter is required for multiclass/multilabel targets.
+
+```
+from sklearn.metrics import precision_score
+precision_score(y_true, y_pred, average='macro')
+```
+
+### [recall_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)
+
+`average` parameter is required for multiclass/multilabel targets.
+
+```
+from sklearn.metrics import recall_score
+recall_score(y_true, y_pred, average='macro')
+```
+
+### [balanced_accuracy_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html#sklearn.metrics.balanced_accuracy_score)
+
+The balanced accuracy in binary and multiclass classification problems to deal with imbalanced datasets. It is defined as the average of recall obtained on each class.
+
+```
+from sklearn.metrics import balanced_accuracy_score
+balanced_accuracy_score(y_true, y_pred)
+```
+
+### [confusion_matrix](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix)
+
+```
+from sklearn.metrics import confusion_matrix
+labels=["a", "b", "c"]
+cm = confusion_matrix(y_true, y_pred, labels=labels)
+```
+
+### [ConfusionMatrixDisplay](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix)
+
+Confusion Matrix visualization.
+
+```
+import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+
+labels=["a", "b", "c"]
+cm = confusion_matrix(y_true, y_pred, labels=labels)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=labels)
+disp.plot()
+plt.show()
+```
