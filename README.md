@@ -153,13 +153,22 @@ data_train, data_test, target_train, target_test = train_test_split(
     data, target, random_state=42)
 ```
 
-### [learning_curve]
+### [learning_curve](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.learning_curve.html)
 
-Split arrays or matrices into random train and test subsets.
+Allows to see how the model performance changes when choosing different train/test split size.
 
 ```
-from sklearn.model_selection import train_test_split
-data_train, data_test, target_train, target_test = train_test_split(
-    data, target, random_state=42)
+from sklearn.tree import DecisionTreeRegressor
+regressor = DecisionTreeRegressor()
+
+from sklearn.model_selection import ShuffleSplit
+cv = ShuffleSplit(n_splits=30, test_size=0.2)
+
+from sklearn.model_selection import learning_curve
+
+train_sizes=[0.3, 0.6, 0.9]
+results = learning_curve(
+    regressor, data, target, train_sizes=train_sizes, cv=cv,
+    scoring="neg_mean_absolute_error", n_jobs=2)
 ```
 
