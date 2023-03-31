@@ -230,3 +230,54 @@ disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=labels)
 disp.plot()
 plt.show()
 ```
+### [roc_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html#sklearn.metrics.roc_curve)
+
+`pos_label` parameter defines the label of the positive class.
+
+```
+from sklearn.metrics import roc_curve
+fpr, tpr, thresholds = roc_curve(y_true, y_scores, pos_label=1)
+```
+
+### [auc](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.auc.html#sklearn.metrics.auc)
+
+Compute Area Under the Curve (AUC).
+
+```
+from sklearn.metrics import roc_curve, auc
+fpr, tpr, thresholds = roc_curve(y_true, y_scores, pos_label=1)
+roc_auc = auc(fpr, tpr)
+```
+
+### [RocCurveDisplay](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.RocCurveDisplay.html)
+
+ROC Curve visualization.
+
+```
+from sklearn.metrics import roc_curve, auc, RocCurveDisplay
+import matplotlib.pyplot as plt
+fpr, tpr, thresholds = roc_curve(y_true, y_scores, pos_label=1)
+roc_auc = auc(fpr, tpr), estimator_name='example estimator')
+disp.plot()
+plt.show()
+```
+
+### [precision_recall_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve)
+
+```
+from sklearn.metrics import precision_recall_curve
+precision, recall, thresholds = precision_recall_curve(y_true, y_scores)
+```
+
+### [PrecisionRecallDisplay](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.PrecisionRecallDisplay.html#sklearn.metrics.PrecisionRecallDisplay)
+
+Precision-Recall visualization.
+
+```
+from sklearn.metrics import precision_recall_curve, PrecisionRecallDisplay
+import matplotlib.pyplot as plt
+precision, recall, thresholds = precision_recall_curve(y_true, y_scores)
+disp = PrecisionRecallDisplay(precision=precision, recall=recall)
+disp.plot()
+plt.show()
+```
