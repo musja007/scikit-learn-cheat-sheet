@@ -295,7 +295,7 @@ param_grid = {
     'parameter_B': (3, 10, 30)}
 model_grid_search = GridSearchCV(model, param_grid=param_grid,
                                  n_jobs=2, cv=2)
-model_grid_search.fit(X, y)
+model_grid_search.fit(data, target)
 ```
 
 ### [RandomizedSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
@@ -311,6 +311,26 @@ model_random_search = RandomizedSearchCV(
     model, param_distributions=param_grid, n_iter=10,
     cv=5, verbose=1,
 )
-model_random_search.fit(X, y)
+model_random_search.fit(data, target)
 ```
 
+## 8. Model selection
+
+### [cross_validate](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html)
+
+Evaluate metric(s) by cross-validation and also record fit/score times. `scoring` parameters is used to define which metric(s) will be computed during each fold. In the `cv` parameter, one can pass any type of splitting strategy: k-fold, stratified and etc.
+
+```
+from sklearn.model_selection import cross_validate
+cv_results = cross_validate(
+    model, data, target, cv=5, scoring="neg_mean_absolute_error")
+```
+
+### [cross_val_score](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html)
+
+Identical to calling the `cross_validate` function and to select the test score only
+
+```
+from sklearn.model_selection import cross_val_score
+scores = cross_val_score(model, data, target)
+```
