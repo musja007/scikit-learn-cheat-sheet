@@ -281,3 +281,36 @@ disp = PrecisionRecallDisplay(precision=precision, recall=recall)
 disp.plot()
 plt.show()
 ```
+
+## 7. Parameter tuning
+
+### [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
+
+Greedy search over specified parameter values for an estimator.
+
+```
+from sklearn.model_selection import GridSearchCV
+param_grid = {
+    'parameter_A': (0.01, 0.1, 1, 10),
+    'parameter_B': (3, 10, 30)}
+model_grid_search = GridSearchCV(model, param_grid=param_grid,
+                                 n_jobs=2, cv=2)
+model_grid_search.fit(X, y)
+```
+
+### [RandomizedSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
+
+In contrast to `GridSearchCV`, not all parameter values are tried out, but rather a fixed number of parameter settings is sampled from the specified distributions. The number of parameter settings that are tried is given by `n_iter`.
+
+```
+from sklearn.model_selection import RandomizedSearchCV
+param_grid = {
+    'parameter_A': (0.01, 0.1, 1, 10),
+    'parameter_B': (3, 10, 30)}
+model_random_search = RandomizedSearchCV(
+    model, param_distributions=param_grid, n_iter=10,
+    cv=5, verbose=1,
+)
+model_random_search.fit(X, y)
+```
+
