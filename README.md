@@ -328,9 +328,50 @@ cv_results = cross_validate(
 
 ### [cross_val_score](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html)
 
-Identical to calling the `cross_validate` function and to select the test score only
+Identical to calling the `cross_validate` function and to select the test score only.
 
 ```
 from sklearn.model_selection import cross_val_score
 scores = cross_val_score(model, data, target)
+```
+
+### [validation_curve](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.validation_curve.html)
+
+Determine training and test scores for varying parameter values.
+
+```
+from sklearn.model_selection import validation_curve
+param_A = [1, 5, 10, 15, 20, 25]
+train_scores, test_scores = validation_curve(
+    model, data, target, param_name="param_A", param_range=param_A,
+    cv=cv, scoring="neg_mean_absolute_error", n_jobs=2)
+```
+
+### [KFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html)
+
+K-Folds cross-validator.
+
+```
+from sklearn.model_selection import KFold
+cv = KFold(n_splits=2)
+cv..get_n_splits(data)
+```
+### [ShuffleSplit](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.ShuffleSplit.html)
+
+Random permutation cross-validator.
+
+```
+from sklearn.model_selection import ShuffleSplit
+cv = ShuffleSplit(n_splits=5, random_state=0)
+cv.get_n_splits(data)
+```
+
+### [StratifiedKFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html)
+
+Stratified K-Folds cross-validator, generates test sets such that all contain the same distribution of classes, or as close as possible.
+
+```
+from sklearn.model_selection import StratifiedKFold
+cv = StratifiedKFold(n_splits=2)
+cv.get_n_splits(data, target)
 ```
