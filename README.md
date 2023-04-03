@@ -406,7 +406,29 @@ cv = LeaveOneGroupOut()
 cv.get_n_splits(data, target, groups=groups)
 ```
 
-## 8. Linear models
+## 9. Dummy models
+
+### [DummyRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyRegressor.html)
+
+Predicts the same value based on a (simple) rule without using training features. `strategy` can be `{“mean”, “median”, “quantile”, “constant”}`.
+
+```
+from sklearn.dummy import DummyRegressor
+model = DummyRegressor(strategy="mean")
+model.fit(data,target)
+```
+
+### [DummyClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)
+
+Predicts the same class based on a (simple) rule without using training features. `strategy` can be `{“most_frequent”, “prior”, “stratified”, “uniform”, “constant”}`.
+
+```
+from sklearn.dummy import DummyClassifier
+model = DummyClassifier(strategy="most_frequent")
+model.fit(data,target)
+```
+
+## 10. Linear models
 
 ### [LinearRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)
 
@@ -415,6 +437,36 @@ Ordinary least squares Linear Regression.
 ```
 from sklearn.linear_model import LinearRegression
 model = LinearRegression()
+model.fit(data,target)
+```
+
+### [Ridge](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html)
+
+Linear least squares with l2 regularization. `alpha` parameter defines the l2 multiplier coefficient.
+
+```
+from sklearn.linear_model import Ridge
+model = Ridge(alpha=1.0)
+model.fit(data,target)
+```
+
+### [RidgeCV](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html)
+
+Ridge regression with built-in cross-validation. `alphas` defines the array of alpha values to try.
+
+```
+from sklearn.linear_model import RidgeCV
+model = RidgeCV(alphas=[1e-3, 1e-2, 1e-1, 1])
+model.fit(data,target)
+```
+
+### [LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
+
+Logistic Regression classifier. `penalty` parameter is by default `l2`, `C` defines inverse of regularization strength, must be a positive float.
+
+```
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression(C = 1.0)
 model.fit(data,target)
 ```
 
