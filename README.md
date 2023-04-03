@@ -1,5 +1,5 @@
 # scikit-learn-cheat-sheet
-A compilation of main commands for scikit-learn with examples
+A compilation of main commands for scikit-learn with examples. Inspired by https://inria.github.io/scikit-learn-mooc/index.html.
 
 ## 1. Numerical data preprocessing
 
@@ -375,3 +375,46 @@ from sklearn.model_selection import StratifiedKFold
 cv = StratifiedKFold(n_splits=2)
 cv.get_n_splits(data, target)
 ```
+
+### [GroupKFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GroupKFold.html)
+
+K-fold iterator variant with non-overlapping groups, which makes each group appear exactly once in the test set across all folds. `groups` should be an array of the same length of data. For each row `groups` should indicate which group it belongs to.
+
+```
+from sklearn.model_selection import GroupKFold
+cv = GroupKFold(n_splits=2)
+cv.get_n_splits(data, target, groups=groups)
+```
+
+### [TimeSeriesSplit](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html)
+
+Time Series cross-validator, provides train/test indices to split time series data samples that are observed at fixed time intervals, in train/test sets.
+
+```
+from sklearn.model_selection import TimeSeriesSplit
+cv = TimeSeriesSplit(n_splits=2)
+cv.get_n_splits(data, target)
+```
+
+### [LeaveOneGroupOut](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.LeaveOneGroupOut.html)
+
+Leave One Group Out cross-validator, provides train/test indices to split data such that each training set is comprised of all samples except ones belonging to one specific group. `groups` should be an array of the same length of data. For each row `groups` should indicate which group it belongs to.
+
+```
+from sklearn.model_selection import LeaveOneGroupOut
+cv = LeaveOneGroupOut()
+cv.get_n_splits(data, target, groups=groups)
+```
+
+## 8. Linear models
+
+### [LinearRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)
+
+Ordinary least squares Linear Regression.
+
+```
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+model.fit(data,target)
+```
+
