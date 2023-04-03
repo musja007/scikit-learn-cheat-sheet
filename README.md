@@ -1,6 +1,71 @@
 # scikit-learn-cheat-sheet
 A compilation of main commands for scikit-learn with examples. Inspired by https://inria.github.io/scikit-learn-mooc/index.html.
 
+- [scikit-learn-cheat-sheet](#scikit-learn-cheat-sheet)
+  * [1. Numerical data preprocessing](#1-numerical-data-preprocessing)
+    + [[StandardScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)](#-standardscaler--https---scikit-learnorg-stable-modules-generated-sklearnpreprocessingstandardscalerhtml-)
+    + [[MinMaxScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)](#-minmaxscaler--https---scikit-learnorg-stable-modules-generated-sklearnpreprocessingminmaxscalerhtml-)
+    + [[Normalizer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html)](#-normalizer--https---scikit-learnorg-stable-modules-generated-sklearnpreprocessingnormalizerhtml-)
+    + [[Binarizer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Binarizer.html)](#-binarizer--https---scikit-learnorg-stable-modules-generated-sklearnpreprocessingbinarizerhtml-)
+    + [[SimpleImputer](https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html)](#-simpleimputer--https---scikit-learnorg-stable-modules-generated-sklearnimputesimpleimputerhtml-)
+    + [[PolynomialFeatures¶](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html)](#-polynomialfeatures---https---scikit-learnorg-stable-modules-generated-sklearnpreprocessingpolynomialfeatureshtml-)
+  * [2. Encoding](#2-encoding)
+    + [[OrdinalEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html)](#-ordinalencoder--https---scikit-learnorg-stable-modules-generated-sklearnpreprocessingordinalencoderhtml-)
+    + [[OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html)](#-onehotencoder--https---scikit-learnorg-stable-modules-generated-sklearnpreprocessingonehotencoderhtml-)
+  * [3. Column selection and transformation](#3-column-selection-and-transformation)
+    + [[make_column_selector](https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector)](#-make-column-selector--https---scikit-learnorg-stable-modules-generated-sklearncomposemake-column-selectorhtml-sklearncomposemake-column-selector-)
+    + [[ColumnTransformer](https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer)](#-columntransformer--https---scikit-learnorg-stable-modules-generated-sklearncomposecolumntransformerhtml-sklearncomposecolumntransformer-)
+  * [4. Pipelines](#4-pipelines)
+    + [[make_pipeline](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html)](#-make-pipeline--https---scikit-learnorg-stable-modules-generated-sklearnpipelinemake-pipelinehtml-)
+    + [[set_config](https://scikit-learn.org/stable/modules/generated/sklearn.set_config.html#sklearn.set_config)](#-set-config--https---scikit-learnorg-stable-modules-generated-sklearnset-confightml-sklearnset-config-)
+  * [5. Model training](#5-model-training)
+    + [[train_test_split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split)](#-train-test-split--https---scikit-learnorg-stable-modules-generated-sklearnmodel-selectiontrain-test-splithtml-sklearnmodel-selectiontrain-test-split-)
+    + [[learning_curve](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.learning_curve.html)](#-learning-curve--https---scikit-learnorg-stable-modules-generated-sklearnmodel-selectionlearning-curvehtml-)
+  * [6. Metrics](#6-metrics)
+    + [[mean_squared_error](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html#sklearn.metrics.mean_squared_error)](#-mean-squared-error--https---scikit-learnorg-stable-modules-generated-sklearnmetricsmean-squared-errorhtml-sklearnmetricsmean-squared-error-)
+    + [[precision_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)](#-precision-score--https---scikit-learnorg-stable-modules-generated-sklearnmetricsprecision-scorehtml-)
+    + [[recall_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)](#-recall-score--https---scikit-learnorg-stable-modules-generated-sklearnmetricsrecall-scorehtml-)
+    + [[balanced_accuracy_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html#sklearn.metrics.balanced_accuracy_score)](#-balanced-accuracy-score--https---scikit-learnorg-stable-modules-generated-sklearnmetricsbalanced-accuracy-scorehtml-sklearnmetricsbalanced-accuracy-score-)
+    + [[confusion_matrix](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix)](#-confusion-matrix--https---scikit-learnorg-stable-modules-generated-sklearnmetricsconfusion-matrixhtml-sklearnmetricsconfusion-matrix-)
+    + [[ConfusionMatrixDisplay](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix)](#-confusionmatrixdisplay--https---scikit-learnorg-stable-modules-generated-sklearnmetricsconfusion-matrixhtml-sklearnmetricsconfusion-matrix-)
+    + [[roc_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html#sklearn.metrics.roc_curve)](#-roc-curve--https---scikit-learnorg-stable-modules-generated-sklearnmetricsroc-curvehtml-sklearnmetricsroc-curve-)
+    + [[auc](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.auc.html#sklearn.metrics.auc)](#-auc--https---scikit-learnorg-stable-modules-generated-sklearnmetricsauchtml-sklearnmetricsauc-)
+    + [[RocCurveDisplay](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.RocCurveDisplay.html)](#-roccurvedisplay--https---scikit-learnorg-stable-modules-generated-sklearnmetricsroccurvedisplayhtml-)
+    + [[precision_recall_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve)](#-precision-recall-curve--https---scikit-learnorg-stable-modules-generated-sklearnmetricsprecision-recall-curvehtml-sklearnmetricsprecision-recall-curve-)
+    + [[PrecisionRecallDisplay](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.PrecisionRecallDisplay.html#sklearn.metrics.PrecisionRecallDisplay)](#-precisionrecalldisplay--https---scikit-learnorg-stable-modules-generated-sklearnmetricsprecisionrecalldisplayhtml-sklearnmetricsprecisionrecalldisplay-)
+  * [7. Parameter tuning](#7-parameter-tuning)
+    + [[GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)](#-gridsearchcv--https---scikit-learnorg-stable-modules-generated-sklearnmodel-selectiongridsearchcvhtml-)
+    + [[RandomizedSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)](#-randomizedsearchcv--https---scikit-learnorg-stable-modules-generated-sklearnmodel-selectiongridsearchcvhtml-)
+  * [8. Model selection](#8-model-selection)
+    + [[cross_validate](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html)](#-cross-validate--https---scikit-learnorg-stable-modules-generated-sklearnmodel-selectioncross-validatehtml-)
+    + [[cross_val_score](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html)](#-cross-val-score--https---scikit-learnorg-stable-modules-generated-sklearnmodel-selectioncross-val-scorehtml-)
+    + [[validation_curve](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.validation_curve.html)](#-validation-curve--https---scikit-learnorg-stable-modules-generated-sklearnmodel-selectionvalidation-curvehtml-)
+    + [[KFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html)](#-kfold--https---scikit-learnorg-stable-modules-generated-sklearnmodel-selectionkfoldhtml-)
+    + [[ShuffleSplit](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.ShuffleSplit.html)](#-shufflesplit--https---scikit-learnorg-stable-modules-generated-sklearnmodel-selectionshufflesplithtml-)
+    + [[StratifiedKFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html)](#-stratifiedkfold--https---scikit-learnorg-stable-modules-generated-sklearnmodel-selectionstratifiedkfoldhtml-)
+    + [[GroupKFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GroupKFold.html)](#-groupkfold--https---scikit-learnorg-stable-modules-generated-sklearnmodel-selectiongroupkfoldhtml-)
+    + [[TimeSeriesSplit](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html)](#-timeseriessplit--https---scikit-learnorg-stable-modules-generated-sklearnmodel-selectiontimeseriessplithtml-)
+    + [[LeaveOneGroupOut](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.LeaveOneGroupOut.html)](#-leaveonegroupout--https---scikit-learnorg-stable-modules-generated-sklearnmodel-selectionleaveonegroupouthtml-)
+  * [9. Dummy models](#9-dummy-models)
+    + [[DummyRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyRegressor.html)](#-dummyregressor--https---scikit-learnorg-stable-modules-generated-sklearndummydummyregressorhtml-)
+    + [[DummyClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)](#-dummyclassifier--https---scikit-learnorg-stable-modules-generated-sklearndummydummyclassifierhtml-)
+  * [10. Linear models](#10-linear-models)
+    + [[LinearRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)](#-linearregression--https---scikit-learnorg-stable-modules-generated-sklearnlinear-modellinearregressionhtml-)
+    + [[Ridge](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html)](#-ridge--https---scikit-learnorg-stable-modules-generated-sklearnlinear-modelridgehtml-)
+    + [[RidgeCV](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html)](#-ridgecv--https---scikit-learnorg-stable-modules-generated-sklearnlinear-modelridgecvhtml-)
+    + [[LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)](#-logisticregression--https---scikit-learnorg-stable-modules-generated-sklearnlinear-modellogisticregressionhtml-)
+  * [11. kNN](#11-knn)
+    + [[KNeighborsRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html#sklearn.neighbors.KNeighborsRegressor)](#-kneighborsregressor--https---scikit-learnorg-stable-modules-generated-sklearnneighborskneighborsregressorhtml-sklearnneighborskneighborsregressor-)
+    + [[KNeighborsClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier)](#-kneighborsclassifier--https---scikit-learnorg-stable-modules-generated-sklearnneighborskneighborsclassifierhtml-sklearnneighborskneighborsclassifier-)
+  * [12. Tree models](#12-tree-models)
+    + [[DecisionTreeRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html#sklearn.tree.DecisionTreeRegressor)](#-decisiontreeregressor--https---scikit-learnorg-stable-modules-generated-sklearntreedecisiontreeregressorhtml-sklearntreedecisiontreeregressor-)
+    + [[DecisionTreeClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier)](#-decisiontreeclassifier--https---scikit-learnorg-stable-modules-generated-sklearntreedecisiontreeclassifierhtml-sklearntreedecisiontreeclassifier-)
+  * [12. Ensemble models](#12-ensemble-models)
+    + [[GradientBoostingRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)](#-gradientboostingregressor--https---scikit-learnorg-stable-modules-generated-sklearnensemblegradientboostingregressorhtml-)
+    + [[GradientBoostingClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)](#-gradientboostingclassifier--https---scikit-learnorg-stable-modules-generated-sklearnensemblegradientboostingclassifierhtml-)
+    + [[RandomForestRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)](#-randomforestregressor--https---scikit-learnorg-stable-modules-generated-sklearnensemblerandomforestregressorhtml-)
+    + [[RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)](#-randomforestclassifier--https---scikit-learnorg-stable-modules-generated-sklearnensemblerandomforestclassifierhtml-)
+
 ## 1. Numerical data preprocessing
 
 ### [StandardScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)
@@ -415,7 +480,7 @@ Predicts the same value based on a (simple) rule without using training features
 ```
 from sklearn.dummy import DummyRegressor
 model = DummyRegressor(strategy="mean")
-model.fit(data,target)
+model.fit(data, target)
 ```
 
 ### [DummyClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)
@@ -425,7 +490,7 @@ Predicts the same class based on a (simple) rule without using training features
 ```
 from sklearn.dummy import DummyClassifier
 model = DummyClassifier(strategy="most_frequent")
-model.fit(data,target)
+model.fit(data, target)
 ```
 
 ## 10. Linear models
@@ -437,7 +502,7 @@ Ordinary least squares Linear Regression.
 ```
 from sklearn.linear_model import LinearRegression
 model = LinearRegression()
-model.fit(data,target)
+model.fit(data, target)
 ```
 
 ### [Ridge](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html)
@@ -447,7 +512,7 @@ Linear least squares with l2 regularization. `alpha` parameter defines the l2 mu
 ```
 from sklearn.linear_model import Ridge
 model = Ridge(alpha=1.0)
-model.fit(data,target)
+model.fit(data, target)
 ```
 
 ### [RidgeCV](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html)
@@ -457,7 +522,7 @@ Ridge regression with built-in cross-validation. `alphas` defines the array of a
 ```
 from sklearn.linear_model import RidgeCV
 model = RidgeCV(alphas=[1e-3, 1e-2, 1e-1, 1])
-model.fit(data,target)
+model.fit(data, target)
 ```
 
 ### [LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
@@ -467,7 +532,7 @@ Logistic Regression classifier. `penalty` parameter is by default `l2`, `C` defi
 ```
 from sklearn.linear_model import LogisticRegression
 model = LogisticRegression(C = 1.0)
-model.fit(data,target)
+model.fit(data, target)
 ```
 
 ## 11. kNN
@@ -479,7 +544,7 @@ Regression based on k-nearest neighbors. `n_neighbors` defines number of neighbo
 ```
 from sklearn.neighbors import KNeighborsRegressor
 model = KNeighborsRegressor(n_neighbors=2)
-model.fit(data,target)
+model.fit(data, target)
 ```
 
 ### [KNeighborsClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier)
@@ -489,7 +554,7 @@ Regression based on k-nearest neighbors. `n_neighbors` defines number of neighbo
 ```
 from sklearn.neighbors import KNeighborsClassifier
 model = KNeighborsRegressor(n_neighbors=2)
-model.fit(data,target)
+model.fit(data, target)
 ```
 
 ## 12. Tree models
@@ -501,7 +566,7 @@ A decision tree regressor. `max_depth` defines the maximum depth of a tree.
 ```
 from sklearn.tree import DecisionTreeRegressor
 model = DecisionTreeRegressor(max_depth=2)
-model.fit(data,target)
+model.fit(data, target)
 ```
 
 ### [DecisionTreeClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier)
@@ -511,5 +576,47 @@ A decision tree classifier. `max_depth` defines the maximum depth of a tree.
 ```
 from sklearn.tree import DecisionTreeClassifier
 model = DecisionTreeClassifier(max_depth=2)
-model.fit(data,target)
+model.fit(data, target)
+```
+
+## 12. Ensemble models
+
+### [GradientBoostingRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)
+
+Gradient Boosting trees for regression. `max_depth` defines the maximum depth of a tree, `learning_rate` defines the "contribution" of each tree, `n_estimators` controls the number of trained trees.
+
+```
+from sklearn.ensemble import GradientBoostingRegressor
+model = GradientBoostingRegressor(max_depth=2, learning_rate=1.0, n_estimators=100)
+model.fit(data, target)
+```
+
+### [GradientBoostingClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)
+
+Gradient Boosting for classification. `max_depth` defines the maximum depth of a tree, `learning_rate` defines the "contribution" of each tree, `n_estimators` controls the number of trained trees.
+
+```
+from sklearn.ensemble import GradientBoostingClassifier
+model = GradientBoostingRegressor(max_depth=2, learning_rate=1.0, n_estimators=100)
+model.fit(data, target)
+```
+
+### [RandomForestRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)
+
+A random forest regressor. `max_depth` defines the maximum depth of a tree, `n_estimators` controls the number of trained trees.
+
+```
+from sklearn.ensemble import RandomForestRegressor
+model = RandomForestRegressor(max_depth=2, n_estimators=100)
+model.fit(data, target)
+```
+
+### [RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)
+
+A random forest classifier. `max_depth` defines the maximum depth of a tree, `n_estimators` controls the number of trained trees.
+
+```
+from sklearn.ensemble import RandomForestClassifier
+model = RandomForestClassifier(max_depth=2, n_estimators=100)
+model.fit(data, target)
 ```
