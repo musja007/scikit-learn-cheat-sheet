@@ -3,7 +3,7 @@ A compilation of main commands for scikit-learn with examples. Inspired by https
 
 - [scikit-learn-cheat-sheet](#scikit-learn-cheat-sheet)
   * [1. Numerical data preprocessing](#1-numerical-data-preprocessing)
-    + [StandardScaler](#-standardscaler--https---scikit-learnorg-stable-modules-generated-sklearnpreprocessingstandardscalerhtml-)
+    + [StandardScaler](https://github.com/musja007/scikit-learn-cheat-sheet/blob/main/README.md#standardscaler)
     + [[MinMaxScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)](#-minmaxscaler--https---scikit-learnorg-stable-modules-generated-sklearnpreprocessingminmaxscalerhtml-)
     + [[Normalizer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html)](#-normalizer--https---scikit-learnorg-stable-modules-generated-sklearnpreprocessingnormalizerhtml-)
     + [[Binarizer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Binarizer.html)](#-binarizer--https---scikit-learnorg-stable-modules-generated-sklearnpreprocessingbinarizerhtml-)
