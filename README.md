@@ -470,3 +470,46 @@ model = LogisticRegression(C = 1.0)
 model.fit(data,target)
 ```
 
+## 11. kNN
+
+### [KNeighborsRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html#sklearn.neighbors.KNeighborsRegressor)
+
+Regression based on k-nearest neighbors. `n_neighbors` defines number of neighbors to use.
+
+```
+from sklearn.neighbors import KNeighborsRegressor
+model = KNeighborsRegressor(n_neighbors=2)
+model.fit(data,target)
+```
+
+### [KNeighborsClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier)
+
+Regression based on k-nearest neighbors. `n_neighbors` defines number of neighbors to use.
+
+```
+from sklearn.neighbors import KNeighborsClassifier
+model = KNeighborsRegressor(n_neighbors=2)
+model.fit(data,target)
+```
+
+## 12. Tree models
+
+### [DecisionTreeRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html#sklearn.tree.DecisionTreeRegressor)
+
+A decision tree regressor. `max_depth` defines the maximum depth of a tree.
+
+```
+from sklearn.tree import DecisionTreeRegressor
+model = DecisionTreeRegressor(max_depth=2)
+model.fit(data,target)
+```
+
+### [DecisionTreeClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier)
+
+A decision tree classifier. `max_depth` defines the maximum depth of a tree.
+
+```
+from sklearn.tree import DecisionTreeClassifier
+model = DecisionTreeClassifier(max_depth=2)
+model.fit(data,target)
+```
